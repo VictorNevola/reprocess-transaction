@@ -1,6 +1,6 @@
-import { Controller, Get, Body, Patch, Param } from '@nestjs/common';
+import { Controller, Get, Body, Patch } from '@nestjs/common';
 import { ReprocessService } from '../service/reprocess.service';
-import { UpdateReprocessDto } from '../dto/update-reprocess.dto';
+import { ReprocessDto } from '../dto/update-reprocess.dto';
 
 @Controller('reprocess')
 export class ReprocessController {
@@ -11,11 +11,8 @@ export class ReprocessController {
     return this.reprocessService.findAll();
   }
 
-  // @Patch(':id')
-  // update(
-  //   @Param('id') id: string,
-  //   @Body() updateReprocessDto: UpdateReprocessDto,
-  // ) {
-  //   return this.reprocessService.update(+id, updateReprocessDto);
-  // }
+  @Patch()
+  update(@Body() updateReprocessDto: ReprocessDto) {
+    return this.reprocessService.reprocessTransaction(updateReprocessDto);
+  }
 }
