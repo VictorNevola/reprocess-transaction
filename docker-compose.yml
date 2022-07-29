@@ -1,0 +1,11 @@
+version: '3.2'
+services:
+  api-reprocess-transactions:
+    image: api/reprocess-transactions:latest
+    env_file:
+      - .env
+    build:
+      context: .
+      dockerfile: 'Dockerfile'
+    ports:
+      - '3000:3000'
